@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encrypted Messages</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+	background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.caplinked.com%2Fblog%2Ftypes-of-encryption-what-should-business-use%2F&psig=AOvVaw1EnGKiGpRJuBZPZRFqrb4f&ust=1679980409374000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIDT5--s-_0CFQAAAAAdAAAAABAE');
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    textarea, input[type="password"] {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    button {
+        display: block;
+        margin: 10px 0;
+        background-color: #4CAF50;
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-image: url('your_image_url_here');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    
+    .output {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+    
+    .output p {
+        margin-top: 0;
+    }
+</style>
+
+</head>
+<body>
+    <h1>Encrypted Messages by G.V</h1>
+    <p>Enter your message:</p>
+    <textarea id="message"></textarea>
+    <p>Enter a secret key:</p>
+    <input type="password" id="key">
+    <button onclick="encrypt()">Encrypt</button>
+    <button onclick="decrypt()">Decrypt</button>
+    <div class="output">
+        <p>Encrypted message:</p>
+        <textarea id="encrypted"></textarea>
+        <p>Decrypted message:</p>
+        <textarea id="decrypted"></textarea>
+    </div>
+
+    <script>
+        function encrypt() {
+            var message = document.getElementById("message").value;
+            var key = document.getElementById("key").value;
+            var encrypted = CryptoJS.AES.encrypt(message, key);
+            document.getElementById("encrypted").value = encrypted.toString();
+        }
+
+        function decrypt() {
+            var encrypted = document.getElementById("encrypted").value;
+            var key = document.getElementById("key").value;
+            var decrypted = CryptoJS.AES.decrypt(encrypted, key);
+            document.getElementById("decrypted").value = decrypted.toString(CryptoJS.enc.Utf8);
+        }
+    </script>
+</body>
+</html>
